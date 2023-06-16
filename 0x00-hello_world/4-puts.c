@@ -1,8 +1,8 @@
 #include <stdio.h>
 /**
- *  main: Entry point and only allowed output
+ *  main - Entry point and only allowed output
  *
- *  return: return zero value when succesfull
+ *  Return: Alway 0 (succesfull)
 */
 int main(void)
 {
