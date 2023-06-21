@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include "main.h"
+#include <unistd.h>
 /**
- *  main - Entry point and print alphabet
+ *  print_alphabet - ENTRY POINT ALHABET a -z
  *
  *  Return: Alway 0 (succesfull)
 */
