@@ -2,7 +2,6 @@
 /**
  * print_most_numbers - prints the  digit of a number
  *
- * @i: skip any numbers that are equal to 2 or 4
  *
  * Return: value of the digit
  *
