@@ -10,4 +10,5 @@ int _sqrt_recursion(int n);
 int is_prime_number(int n);
 int _putchar(char c);
 int helper(int start, int end, int n);
+
 #endif /* MAIN_H */
