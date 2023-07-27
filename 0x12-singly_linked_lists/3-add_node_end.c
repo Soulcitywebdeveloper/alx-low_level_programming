@@ -10,38 +10,35 @@
  * @str: string to store in the list.
  * Return: address of the head.
  */
+
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new_node = malloc(sizeof(list_t));
+	list_t *new, *temp;
+	size_t newchar;
 
-	if (new_node == NULL)
+	new = malloc(sizeof(list_t));
+	if (new == NULL)
 		return (NULL);
 
-	char *dup_str = strdup(str);
+	new->str = strdup(str);
 
-	if (dup_str == NULL)
+	for (newchar = 0; str[newchar]; newchar++)
+		;
+
+	new->len = newchar;
+	new->next = NULL;
+	temp = *head;
+
+	if (temp == NULL)
 	{
-		free(new_node);
-		return (NULL);
-	}
-
-	new_node->str = dup_str;
-	new_node->next = NULL;
-
-	if (*head == NULL)
-	{
-		*head = new_node;
+		*head = new;
 	}
 	else
 	{
-		list_t *current = *head;
-
-		while (current->next != NULL)
-		{
-			current = current->next;
-		}
-		current->next = new_node;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
 	}
 
-	return (new_node);
+	return (*head);
 }
