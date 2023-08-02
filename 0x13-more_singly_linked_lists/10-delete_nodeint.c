@@ -5,42 +5,43 @@
  * of a linked list.
  * @head: head of a list.
  * @index: index of the list where the node is
- * deleted.
+ * delete.
  *
- * Return: 1 if it succeeded, -1 if it failed.
+ * Return: 1 if it succeed, -1 if it fail.
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	if (*head == NULL)
-	{
-		return (-1);
-	}
-
-	listint_t *current = *head;
-	listint_t *previous = NULL;
-
-	if (index == 0)
-	{
-		*head = current->next;
-		free(current);
-		return (1);
-	}
-
 	unsigned int i;
+	listint_t *previous;
+	listint_t *current;
 
-	for (i = 0; current != NULL && i < index; i++)
+	previous = *head;
+
+	if (index != 0)
 	{
-		previous = current;
-		current = current->next;
+		for (i = 0; i < index - 1 && previous != NULL; i++)
+		{
+			previous = previous->next;
+		}
 	}
 
-	if (current == NULL)
+	if (previous == NULL || (previous->next == NULL && index != 0))
 	{
 		return (-1);
 	}
 
-	previous->next = current->next;
-	free(current);
+	current = previous->current;
+
+	if (index != 0)
+	{
+		previous->current = current->current;
+		free(current);
+	}
+	else
+	{
+		free(previous);
+		*head = current;
+	}
 
 	return (1);
 }
