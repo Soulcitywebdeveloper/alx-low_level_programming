@@ -1,8 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
 #include "main.h"
+
 /**
  * read_textfile - Rds a txt file and prnts to the POSIX standard output.
  * @filename: The name of the file to read.
