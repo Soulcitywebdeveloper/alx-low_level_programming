@@ -10,28 +10,29 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	FILE *file;
-	int count = 0;
+	int f;
+	int n;
+	int rr;
 
-	if (filename == NULL)
+	if (!filename)
 		return (-1);
 
-	if (text_content == NULL)
-		return (1);
+	f = open(filename, O_WRONLY | O_APPEND);
 
-	file = fopen(filename, "a");
-	if (file == NULL)
+	if (f == -1)
 		return (-1);
 
-	while (text_content[count] != '\0')
-		count++;
-
-	if (fwrite(text_content, sizeof(char), count, file) != count)
+	if (text_content)
 	{
-		fclose(file);
-		return (-1);
+		for (n = 0; text_content[n]; n++);
+
+		rr = write(f, text_content, n);
+
+		if (rr == -1)
+			return (-1);
 	}
 
-	fclose(file);
+	close(f);
+
 	return (1);
 }
